@@ -29,7 +29,8 @@
   </head>
 
   <body>
-
+  <script src="/code/highcharts.js"></script>
+  <script src="/code/modules/exporting.js"></script>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -71,6 +72,7 @@
           <h1>ATP Cool Application</h1>
           <br/>
           <br/>
+          <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
 
           <p class="lead">Back-End servicies</p>
         </div>
@@ -82,6 +84,71 @@
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
+
+  <script type="text/javascript">
+
+      Highcharts.chart('container', {
+          chart: {
+              type: 'bar'
+          },
+          title: {
+              text: 'App chart example'
+          },
+          subtitle: {
+              text: 'Subtitle'
+          },
+          xAxis: {
+              categories: ['Pivo', 'Voda', 'Chléb', 'Maso', 'Brambory'],
+              title: {
+                  text: null
+              }
+          },
+          yAxis: {
+              min: 0,
+              title: {
+                  text: 'Cena (Kč)',
+                  align: 'high'
+              },
+              labels: {
+                  overflow: 'justify'
+              }
+          },
+          tooltip: {
+              valueSuffix: ' Kč'
+          },
+          plotOptions: {
+              bar: {
+                  dataLabels: {
+                      enabled: true
+                  }
+              }
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'top',
+              x: -40,
+              y: 80,
+              floating: true,
+              borderWidth: 1,
+              backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+              shadow: true
+          },
+          credits: {
+              enabled: false
+          },
+          series: [{
+              name: 'Červen',
+              data: [25, 10, 15, 90, 24]
+          }, {
+              name: 'Červenec',
+              data: [26, 11, 15, 95, 23]
+          }, {
+              name: 'Srpen',
+              data: [24, 9, 18, 85, 30]
+          }]
+      });
+  </script>
   </body>
 
 </html>
