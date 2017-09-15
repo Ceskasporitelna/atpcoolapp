@@ -27,10 +27,10 @@
     <!--
     <Manager pathname="" />
     -->
-<Resource name="jdbc/morfina" auth="Container"
+<Resource name="jdbc/bigsix" auth="Container"
           type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-          url="jdbc:postgresql://10.0.0.5:5432/morfina"
-          username="morfina" password="hmorf007" maxTotal="20" maxIdle="10" validationQuery="select 1"
+          url="jdbc:postgresql://10.0.0.5:5432/bigsix"
+          username="bigsix" password="big6" maxTotal="20" maxIdle="10" validationQuery="select 1"
 />
 
 </Context>

@@ -116,7 +116,7 @@
                 </dependencies>
                 <configuration>
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://atpagents.australiaeast.cloudapp.azure.com:5432/bigsix/</url>
+                    <url>jdbc:postgresql://atpagents.australiaeast.cloudapp.azure.com:5432/bigsix</url>
                     <user>bigsix</user>
                     <password>big6</password>
                     <schemas>
