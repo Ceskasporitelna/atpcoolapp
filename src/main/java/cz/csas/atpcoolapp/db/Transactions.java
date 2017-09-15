@@ -18,7 +18,7 @@ import java.sql.SQLException;
  *
  */
 public class Transactions {
-    private static final String INSERT_TRANSACTION = "insert into MORFINA.MORFINA_CONF_BDT values (?, ?, ?, ?, ?, now(), ?, ?)";
+    private static final String INSERT_TRANSACTION = "insert into HPLATFORM.TRANSACTIONS values (?, ?, ?, ?, ?, now(), ?, ?)";
 
     public void writeTransaction(Transaction transaction) {
         Connection conn = null;
@@ -40,7 +40,7 @@ public class Transactions {
             preparedStatement.setString(6, transaction.getStatus());
             preparedStatement.setString(7, transaction.getPubkey());
 
-            rs = preparedStatement.executeQuery();
+            preparedStatement.execute();
 
         } catch (NameNotFoundException e) {
             e.printStackTrace();

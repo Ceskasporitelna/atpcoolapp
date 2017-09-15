@@ -2,6 +2,8 @@ package cz.csas.atpcoolapp.rest;
 
 import cz.csas.atpcoolapp.entity.Version;
 import cz.csas.atpcoolapp.services.Record;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -27,11 +29,15 @@ public class RestService {
     @POST
     @Produces("application/json")
     public Response saifu(String body) {
+        try {
+            JSONObject jsonObject = new JSONObject(body);
+            int amount = jsonObject.getInt("amount");
+            String trnid = jsonObject.getString("trnId");
 
-        //TODO: create "real" data
-        UUID trnid = UUID.randomUUID();
-
-        Record.writeTransaction(100, trnid.toString());
+            Record.writeTransaction(amount, trnid);
+        } catch (JSONException e) {
+            return Response.status(500).build();
+        }
 
         return Response.status(204).build();
     }
