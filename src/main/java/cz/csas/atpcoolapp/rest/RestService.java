@@ -1,9 +1,11 @@
 package cz.csas.atpcoolapp.rest;
 
 import cz.csas.atpcoolapp.entity.Version;
+import cz.csas.atpcoolapp.services.Record;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.UUID;
 
 
 /**
@@ -27,6 +29,9 @@ public class RestService {
     public Response saifu(String body) {
 
         //TODO: create "real" data
+        UUID trnid = UUID.randomUUID();
+
+        Record.writeTransaction(100, trnid.toString());
 
         return Response.status(204).build();
     }
