@@ -4,6 +4,7 @@ import cz.csas.atpcoolapp.Common;
 import cz.csas.atpcoolapp.cryprography.paillier.PublicKey;
 import cz.csas.atpcoolapp.db.Transactions;
 import cz.csas.atpcoolapp.entity.BillIItem;
+import cz.csas.atpcoolapp.entity.Price;
 import cz.csas.atpcoolapp.entity.Transaction;
 import jdk.nashorn.api.scripting.JSObject;
 import org.json.JSONObject;
@@ -90,6 +91,27 @@ public class Record {
             e.printStackTrace();
         }
 
+        List<Price> pricesList = new ArrayList<>();
+
+        for(BillIItem billIItem: billItems) {
+            Map<String, Price> pricesMap = StatPrices.getStatPrices(billIItem.getType());
+
+            Set<String> regions = pricesMap.keySet();
+
+            for(String region: regions) {
+                Price price = pricesMap.get(region);
+                price.setTrnid(trnid);
+                try {
+                    price.setPrice(publicKey.encrypt(new BigInteger(price.getPrice())).toString());
+                } catch (PublicKey.InvalidPaillierValueException e) {
+                    e.printStackTrace();
+                }
+                pricesList.add(price);
+            }
+
+        }
+
+        transDb.writePrices(pricesList);
 
         transaction.setTrnid(trnid);
         try {

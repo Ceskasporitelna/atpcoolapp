@@ -44,9 +44,10 @@ public class StatPrices {
                     while (rs.next()) {
                         Price statPrice = new Price();
                         statPrice.setId(rs.getString("id"));
-                        statPrice.setPrice(rs.getDouble("value")*100 + "");
+                        statPrice.setPrice(new Double(rs.getDouble("value")*100).intValue() + "");
                         statPrice.setRegion(rs.getString("regionkode"));
                         statPrice.setName(rs.getString("name"));
+                        statPrice.setType(rs.getString("cenkod"));
                         statPrices.put(statPrice.getRegion(),statPrice);
                     }
                 }
