@@ -1,5 +1,7 @@
 package cz.csas.atpcoolapp;
 
+import cz.csas.atpcoolapp.entity.TicketItem;
+
 /**
  * Created by pavel on 15.09.2017.
  *
@@ -7,6 +9,11 @@ package cz.csas.atpcoolapp;
 public class Common {
     public static final String POOL_DATA_SOURCE = "java:/comp/env/jdbc/bigsix";
     // public static final String CONTEXT_FACTORY = "weblogic.jndi.WLInitialContextFactory";
+
+    public TicketItem PIVO = new TicketItem("213101", "Pilsner Urqell, světlý ležák, plech 0,5l", "a0a0a0a0a0a0");
+    public TicketItem MLEKO = new TicketItem("114301", "Tatra Trvanlivé polotučné mléko 1,5%, 1l", "a0a0a0a0a0a0");
+    public TicketItem VINO = new TicketItem("212105", "Moët & Chandon Imperial Brut, 0,75l", "a0a0a0a0a0a0");
+    public TicketItem VEJCE = new TicketItem("2000005", "Vejce M balení, 10ks", "a0a0a0a0a0a0");
 
     public static final String DEMO_AES_PRIV = "{\n" +
             "  \t\"method\":\"AES\",\n" +
