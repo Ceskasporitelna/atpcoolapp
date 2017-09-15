@@ -11,9 +11,9 @@ public class Common {
     public static final String POOL_DATA_SOURCE = "java:/comp/env/jdbc/bigsix";
     // public static final String CONTEXT_FACTORY = "weblogic.jndi.WLInitialContextFactory";
 
-    public BillIItem PIVO = new  BillIItem(null, null,"213101", "a0a0a0a0a0a0", "Pilsner Urqell, světlý ležák, plech 0,5l");
-    public BillIItem MLEKO = new  BillIItem(null, null,"114301", "a0a0a0a0a0a0", "Tatra Trvanlivé polotučné mléko 1,5%, 1l");
-    public BillIItem VINO = new  BillIItem(null, null,"212105", "a0a0a0a0a0a0", "Moët & Chandon Imperial Brut, 0,75l");
+    public BillIItem PIVO = new  BillIItem(null, null,"0213101", "a0a0a0a0a0a0", "Pilsner Urqell, světlý ležák, plech 0,5l");
+    public BillIItem MLEKO = new  BillIItem(null, null,"0114301", "a0a0a0a0a0a0", "Tatra Trvanlivé polotučné mléko 1,5%, 1l");
+    public BillIItem VINO = new  BillIItem(null, null,"0212105", "a0a0a0a0a0a0", "Moët & Chandon Imperial Brut, 0,75l");
     public BillIItem VEJCE = new  BillIItem(null, null,"2000005", "a0a0a0a0a0a0", "Vejce M balení, 10ks");
 
     // public TicketItem PIVO = new TicketItem("213101", "Pilsner Urqell, světlý ležák, plech 0,5l", "a0a0a0a0a0a0");
