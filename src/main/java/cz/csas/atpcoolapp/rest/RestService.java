@@ -30,11 +30,14 @@ public class RestService {
     @Produces("application/json")
     public Response saifu(String body) {
         try {
+            System.out.println("Saifu: " + body);
             JSONObject jsonObject = new JSONObject(body);
             int amount = jsonObject.getInt("amount");
             String trnid = jsonObject.getString("trnId");
 
-            Record.writeTransaction(amount, trnid);
+            Record record = new Record();
+
+            record.writeTransaction(amount, trnid);
         } catch (JSONException e) {
             return Response.status(500).build();
         }

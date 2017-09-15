@@ -3,19 +3,20 @@ package cz.csas.atpcoolapp.services;
 import cz.csas.atpcoolapp.Common;
 import cz.csas.atpcoolapp.cryprography.paillier.PublicKey;
 import cz.csas.atpcoolapp.db.Transactions;
+import cz.csas.atpcoolapp.entity.BillIItem;
 import cz.csas.atpcoolapp.entity.Transaction;
 import jdk.nashorn.api.scripting.JSObject;
 import org.json.JSONObject;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by pavel on 15.09.2017.
  *
  */
 public class Record {
-    public static void writeTransaction(int amount, String trnid) {
+    public void writeTransaction(int amount, String trnid) {
         Transaction transaction = new Transaction();
         Transactions transDb = new Transactions();
         JSONObject pk = new JSONObject(Common.DEMO_PAILLIER_PUB);
@@ -26,6 +27,68 @@ public class Record {
 
         PublicKey publicKey = new PublicKey(n, nSquared, g, bits);
 
+        Common common = new Common();
+
+        List<BillIItem> billItems = new ArrayList<BillIItem>();
+
+        try {
+            // --- PIVO
+            BillIItem pivo = common.PIVO;
+            pivo.setTrnid(trnid);
+            pivo.setId(UUID.randomUUID().toString());
+            pivo.setPrice(publicKey.encrypt(BigInteger.valueOf(2290)).toString());
+
+            System.out.println("PIVO");
+
+            transDb.writeBillItem(pivo);
+            billItems.add(pivo);
+
+            System.out.println("PIVO ZAPSANO");
+
+        } catch (PublicKey.InvalidPaillierValueException e) {
+            e.printStackTrace();
+            System.out.println("PIVO CHYBA");
+        }
+
+        try {
+            // --- MLEKO
+            BillIItem mleko = common.MLEKO;
+            mleko.setTrnid(trnid);
+            mleko.setId(UUID.randomUUID().toString());
+            mleko.setPrice(publicKey.encrypt(BigInteger.valueOf(1190)).toString());
+
+            transDb.writeBillItem(mleko);
+            billItems.add(mleko);
+
+        } catch (PublicKey.InvalidPaillierValueException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // --- VINO
+            BillIItem vino = common.VINO;
+            vino.setTrnid(trnid);
+            vino.setId(UUID.randomUUID().toString());
+            vino.setPrice(publicKey.encrypt(BigInteger.valueOf(158600)).toString());
+
+            transDb.writeBillItem(vino);
+            billItems.add(vino);
+        } catch (PublicKey.InvalidPaillierValueException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // --- VEJCE
+            BillIItem vejce = common.VEJCE;
+            vejce.setTrnid(trnid);
+            vejce.setId(UUID.randomUUID().toString());
+            vejce.setPrice(publicKey.encrypt(BigInteger.valueOf(3490)).toString());
+
+            transDb.writeBillItem(vejce);
+            billItems.add(vejce);
+        } catch (PublicKey.InvalidPaillierValueException e) {
+            e.printStackTrace();
+        }
 
 
         transaction.setTrnid(trnid);

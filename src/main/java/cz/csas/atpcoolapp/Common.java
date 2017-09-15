@@ -1,5 +1,6 @@
 package cz.csas.atpcoolapp;
 
+import cz.csas.atpcoolapp.entity.BillIItem;
 import cz.csas.atpcoolapp.entity.TicketItem;
 
 /**
@@ -10,10 +11,15 @@ public class Common {
     public static final String POOL_DATA_SOURCE = "java:/comp/env/jdbc/bigsix";
     // public static final String CONTEXT_FACTORY = "weblogic.jndi.WLInitialContextFactory";
 
-    public TicketItem PIVO = new TicketItem("213101", "Pilsner Urqell, světlý ležák, plech 0,5l", "a0a0a0a0a0a0");
-    public TicketItem MLEKO = new TicketItem("114301", "Tatra Trvanlivé polotučné mléko 1,5%, 1l", "a0a0a0a0a0a0");
-    public TicketItem VINO = new TicketItem("212105", "Moët & Chandon Imperial Brut, 0,75l", "a0a0a0a0a0a0");
-    public TicketItem VEJCE = new TicketItem("2000005", "Vejce M balení, 10ks", "a0a0a0a0a0a0");
+    public BillIItem PIVO = new  BillIItem(null, null,"213101", "a0a0a0a0a0a0", "Pilsner Urqell, světlý ležák, plech 0,5l");
+    public BillIItem MLEKO = new  BillIItem(null, null,"114301", "a0a0a0a0a0a0", "Tatra Trvanlivé polotučné mléko 1,5%, 1l");
+    public BillIItem VINO = new  BillIItem(null, null,"212105", "a0a0a0a0a0a0", "Moët & Chandon Imperial Brut, 0,75l");
+    public BillIItem VEJCE = new  BillIItem(null, null,"2000005", "a0a0a0a0a0a0", "Vejce M balení, 10ks");
+
+    // public TicketItem PIVO = new TicketItem("213101", "Pilsner Urqell, světlý ležák, plech 0,5l", "a0a0a0a0a0a0");
+    // public TicketItem MLEKO = new TicketItem("114301", "Tatra Trvanlivé polotučné mléko 1,5%, 1l", "a0a0a0a0a0a0");
+    // public TicketItem VINO = new TicketItem("212105", "Moët & Chandon Imperial Brut, 0,75l", "a0a0a0a0a0a0");
+    // public TicketItem VEJCE = new TicketItem("2000005", "Vejce M balení, 10ks", "a0a0a0a0a0a0");
 
     public static final String DEMO_AES_PRIV = "{\n" +
             "  \t\"method\":\"AES\",\n" +

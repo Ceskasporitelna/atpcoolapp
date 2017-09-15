@@ -9,6 +9,23 @@ public class BillIItem {
     private String trnid;
     private String type;
     private String price;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BillIItem(String id, String trnid, String type, String price, String name) {
+        this.id = id;
+        this.trnid = trnid;
+        this.type = type;
+        this.price = price;
+        this.name = name;
+    }
 
     public String getId() {
         return id;
