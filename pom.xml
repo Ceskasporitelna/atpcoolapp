@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cz.csas.atp</groupId>
-    <artifactId>atpcoolapp</artifactId>
+    <artifactId>bigsix</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>atpcoolapp</name>
+    <name>bigsix</name>
     <url>http://maven.apache.org</url>
     <properties>
         <version.template.file>src/main/java/cz/csas/atpcoolapp/entity/Version.java.template</version.template.file>
@@ -56,7 +56,7 @@
 
     </dependencies>
     <build>
-        <finalName>atpcoolapp</finalName>
+        <finalName>bigsix</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -116,11 +116,11 @@
                 </dependencies>
                 <configuration>
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://morfinaagents.westeurope.cloudapp.azure.com:5432/</url>
-                    <user>morfina</user>
-                    <password>hmorf007</password>
+                    <url>jdbc:postgresql://atpagents.australiaeast.cloudapp.azure.com:5432/bigsix/</url>
+                    <user>bigsix</user>
+                    <password>big6</password>
                     <schemas>
-                        <schema>MORFINA</schema>
+                        <schema>bigsix</schema>
                     </schemas>
                     <locations>
                         <location>filesystem:src/resources/db/migration</location>

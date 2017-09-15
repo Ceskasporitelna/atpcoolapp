@@ -20,4 +20,14 @@ public class RestService {
 
         return Response.status(200).entity(version).build();
     }
+
+    @Path("saifu")
+    @POST
+    @Produces("application/json")
+    public Response saifu(String body) {
+
+        //TODO: create "real" data
+
+        return Response.status(204).build();
+    }
 }
