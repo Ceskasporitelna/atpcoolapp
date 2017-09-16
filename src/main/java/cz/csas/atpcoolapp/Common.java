@@ -3,6 +3,9 @@ package cz.csas.atpcoolapp;
 import cz.csas.atpcoolapp.entity.BillIItem;
 import cz.csas.atpcoolapp.entity.TicketItem;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by pavel on 15.09.2017.
  *
@@ -16,6 +19,24 @@ public class Common {
     public BillIItem VINO = new  BillIItem(null, null,"0212105", "a0a0a0a0a0a0", "Moët & Chandon Imperial Brut, 0,75l");
     public BillIItem VEJCE = new  BillIItem(null, null,"2000005", "a0a0a0a0a0a0", "Vejce M balení, 10ks");
 
+    public static Map<String, String> regionMap = new HashMap();
+
+    static {
+        regionMap.put("3018", "Hlavní město Praha");
+        regionMap.put("3026", "Středočeský kraj");
+        regionMap.put("3034", "Jihočeský kraj");
+        regionMap.put("3042", "Plzeňský kraj");
+        regionMap.put("3051", "Karlovarský kraj");
+        regionMap.put("3069", "Ústecký kraj");
+        regionMap.put("3077", "Liberecký kraj");
+        regionMap.put("3085", "Královéhradecký kraj");
+        regionMap.put("3093", "Pardubický kraj");
+        regionMap.put("3107", "Kraj Vysočina");
+        regionMap.put("3115", "Jihomoravský kraj");
+        regionMap.put("3123", "Olomoucký kraj");
+        regionMap.put("3131", "Zlínský kraj");
+        regionMap.put("3140", "Moravskoslezský kraj");
+    }
     // public TicketItem PIVO = new TicketItem("213101", "Pilsner Urqell, světlý ležák, plech 0,5l", "a0a0a0a0a0a0");
     // public TicketItem MLEKO = new TicketItem("114301", "Tatra Trvanlivé polotučné mléko 1,5%, 1l", "a0a0a0a0a0a0");
     // public TicketItem VINO = new TicketItem("212105", "Moët & Chandon Imperial Brut, 0,75l", "a0a0a0a0a0a0");
