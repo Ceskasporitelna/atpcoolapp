@@ -3,7 +3,7 @@ package cz.csas.atpcoolapp.entity;
 import java.util.Date;
 
 /**
- * Created by Pavel on 18. 8. 2016.
+ * Created by Pavel
  *
  */
 public class Version {

@@ -10,7 +10,7 @@ import javax.ws.rs.ext.Provider;
 import java.text.SimpleDateFormat;
 
 /**
- * Created by Petr Michalik on 17.9.2016.
+ * Created by Petr Michalik
  */
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
