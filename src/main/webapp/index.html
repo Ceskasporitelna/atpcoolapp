@@ -57,7 +57,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 text-center"><img src="logo2_480.png" style="margin-top: 15px; margin-left: 15px"></div>
-      <div class="col-md-8"><p>Toto je ukázka homomorfně šifrovaných dat platebních trasnakcí (tabulka vlevo). Cen jednotlivých položek poslední transakce/nákupu (horní tabulka vpravo) a součtu homomorfně zašifrovaných dat se statistickými daty průměrných hodnot shodných položek z transakce.</p> <p> Data může dekódovat pouze vlastník primárního klíče (např. majitel účtu/karty z kterho/é byla transakce provedena). Obchodník/provozovatel aplikace může s encriptovanými daty provádět vybrané matematické operace aniž by znal hodnotu jednotlivých položek či výsledek operace.</p></div>
+      <div class="col-md-8"><p>Toto je ukázka homomorfně šifrovaných dat platebních trasnakcí (tabulka vlevo). Ceny jednotlivých položek poslední transakce/nákupu (horní tabulka vpravo) a součtu homomorfně zašifrovaných dat se statistickými daty průměrných hodnot shodných položek z transakce.</p> <p> Data může dekódovat pouze vlastník primárního klíče (např. majitel účtu/karty z kterého/é byla transakce provedena). Obchodník/provozovatel aplikace může s encryptovanými daty provádět vybrané matematické operace aniž by znal hodnotu jednotlivých položek či výsledek operace.</p></div>
     </div>
   </div>
 </div>
@@ -79,6 +79,22 @@
 
             <h4>Košíky - porovnání</h4>
             <div id="basket-table"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center text-left">
+            <div class="navbar text-left">
+                <h4>Public key pro tutosadu dat:</h4>
+                <pre style="font-size: 8pt; padding-left: 5px">
+{<br/>
+&nbsp;&nbsp;"method":"PAILLIER",<br/>
+&nbsp;&nbsp;"nSquared":"2744048369671095574561583007959980901355918163690500471631736129549114696724932097880235179184429799730201850640419024858965622819166137651676944593730281",<br/>
+&nbsp;&nbsp;"g":"9819266694848734599019384375903625362875798967138880476824318058493575873131",<br/>
+&nbsp;&nbsp;"bits":256,<br/>
+&nbsp;&nbsp;"n":"52383665103456588650854395856875290392884554625553083201198459773567331028909"<br/>
+}
+                </pre>
+            </div>
         </div>
     </div>
 
@@ -138,7 +154,6 @@
 
 <script>
     var trnid;
-    readtrn();
 
     function poll() {
         setTimeout(function () {
