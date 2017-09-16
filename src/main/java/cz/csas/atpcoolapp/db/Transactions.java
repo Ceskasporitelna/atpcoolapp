@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ import java.util.List;
  *
  */
 public class Transactions {
-    private static final String INSERT_TRANSACTION = "insert into HPLATFORM.TRANSACTIONS values (?, ?, ?, ?, ?, now(), ?, ?)";
+    private static final String INSERT_TRANSACTION = "insert into HPLATFORM.TRANSACTIONS values (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String INSERT_BILLITEM = "insert into HPLATFORM.BILITEMS values (?, ?, ?, ?, ?)";
     private static final String INSERT_PRICE = "insert into HPLATFORM.PRICES values (?, ?, ?, ?, ?)";
 
@@ -42,8 +43,9 @@ public class Transactions {
             preparedStatement.setString(3, transaction.getCurrency());
             preparedStatement.setString(4, transaction.getExpdate());
             preparedStatement.setString(5, transaction.getMpan());
-            preparedStatement.setString(6, transaction.getStatus());
-            preparedStatement.setString(7, transaction.getPubkey());
+            preparedStatement.setDate(6, new java.sql.Date(new Date().getTime()));
+            preparedStatement.setString(7, transaction.getStatus());
+            preparedStatement.setString(8, transaction.getPubkey());
 
             preparedStatement.execute();
 
