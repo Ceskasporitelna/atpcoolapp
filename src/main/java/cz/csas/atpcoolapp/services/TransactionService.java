@@ -179,7 +179,8 @@ public class TransactionService {
             if (otherBaskets.get(price.getRegion()) == null) {
                 otherBaskets.put(price.getRegion(), new BigInteger(price.getPrice()));
             } else {
-                otherBaskets.put(price.getRegion(), otherBaskets.get(price.getRegion()).multiply(new BigInteger(price.getPrice())).mod(publicKey.getnSquared()));
+                BigInteger priceI = new BigInteger(price.getPrice()).multiply(new BigInteger("100"));
+                otherBaskets.put(price.getRegion(), otherBaskets.get(price.getRegion()).multiply(priceI).mod(publicKey.getnSquared()));
             }
         }
 
