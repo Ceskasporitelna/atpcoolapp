@@ -70,7 +70,7 @@ public class Record {
             BillIItem vino = common.VINO;
             vino.setTrnid(trnid);
             vino.setId(UUID.randomUUID().toString());
-            vino.setPrice(publicKey.encrypt(BigInteger.valueOf(158600)).toString());
+            vino.setPrice(publicKey.encrypt(BigInteger.valueOf(8500)).toString());
 
             transDb.writeBillItem(vino);
             billItems.add(vino);
