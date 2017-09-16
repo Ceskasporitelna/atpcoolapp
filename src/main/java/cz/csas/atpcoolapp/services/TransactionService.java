@@ -1,0 +1,85 @@
+package cz.csas.atpcoolapp.services;
+
+import cz.csas.atpcoolapp.Common;
+import cz.csas.atpcoolapp.entity.Price;
+import cz.csas.atpcoolapp.entity.Transaction;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NameNotFoundException;
+import javax.naming.NamingException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * Created by cen29253 on 16.9.2017.
+ */
+public class TransactionService {
+    private static final String SELECT_ALL_TRANSACTIONS = "select * from HPLATFORM.TRANSACTIONS order by authdate desc";
+
+    public static List<Transaction> getTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement preparedStatement;
+        Context ctx = null;
+        String pool_data_source = Common.POOL_DATA_SOURCE;
+        ResultSet rs = null;
+        try {
+            ctx = new InitialContext();
+            javax.sql.DataSource ds = (javax.sql.DataSource) ctx.lookup(pool_data_source);
+            conn = ds.getConnection();
+            preparedStatement = conn.prepareStatement(SELECT_ALL_TRANSACTIONS);
+
+            rs = preparedStatement.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Transaction trn = new Transaction();
+                    trn.setTrnid(rs.getString("trnid"));
+                    trn.setAmount(rs.getString("amount"));
+                    trn.setCurrency(rs.getString("currency"));
+                    trn.setExpdate(rs.getString("expdate"));
+                    trn.setMpan(rs.getString("mpan"));
+                    trn.setStatus(rs.getString("status"));
+                    trn.setAuthdate(rs.getDate("authdate"));
+                    //trn.setPubkey(rs.getString("pubkey"));
+                    transactions.add(trn);
+                }
+            }
+
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+
+                if (ctx != null) {
+                    ctx.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return transactions;
+    }
+
+
+}
