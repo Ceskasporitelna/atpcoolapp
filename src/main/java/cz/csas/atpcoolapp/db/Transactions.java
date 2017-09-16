@@ -43,7 +43,7 @@ public class Transactions {
             preparedStatement.setString(3, transaction.getCurrency());
             preparedStatement.setString(4, transaction.getExpdate());
             preparedStatement.setString(5, transaction.getMpan());
-            preparedStatement.setDate(6, new java.sql.Date(new Date().getTime()));
+            preparedStatement.setTimestamp(6, new java.sql.Timestamp(new Date().getTime()));
             preparedStatement.setString(7, transaction.getStatus());
             preparedStatement.setString(8, transaction.getPubkey());
 

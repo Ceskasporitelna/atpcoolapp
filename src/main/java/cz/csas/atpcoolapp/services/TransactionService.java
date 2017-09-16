@@ -51,7 +51,7 @@ public class TransactionService {
                     trn.setExpdate(rs.getString("expdate"));
                     trn.setMpan(rs.getString("mpan"));
                     trn.setStatus(rs.getString("status"));
-                    trn.setAuthdate(rs.getDate("authdate"));
+                    trn.setAuthdate(rs.getTimestamp("authdate"));
                     //trn.setPubkey(rs.getString("pubkey"));
                     transactions.add(trn);
                 }

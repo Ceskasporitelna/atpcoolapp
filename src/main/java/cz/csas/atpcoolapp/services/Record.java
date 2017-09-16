@@ -121,8 +121,8 @@ public class Record {
         }
         transaction.setCurrency("CZK");
         transaction.setExpdate("2030-01-01");
-        transaction.setMpan("mpan");
-        transaction.setStatus("status");
+        transaction.setMpan("445566xxxxxx7890");
+        transaction.setStatus("schvaleno");
         transaction.setPubkey(Common.DEMO_PAILLIER_PUB);
 
         transDb.writeTransaction(transaction);
