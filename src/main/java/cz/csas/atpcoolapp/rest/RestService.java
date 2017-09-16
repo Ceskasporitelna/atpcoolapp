@@ -78,15 +78,18 @@ public class RestService {
 
 
     @Path("decrypt")
-    @GET
+    @POST
     @Produces("application/json")
-    public Response decryption(@QueryParam("data") String data) {
+    public Response decryption(String body) {
+        JSONObject in = new JSONObject(body);
+        
+        String data = in.getString("data");
 
         JSONObject res = new JSONObject();
 
         res.put("value", decrypt(new BigInteger(data)).toString());
 
-        return Response.status(200).entity(res).build();
+        return Response.status(200).entity(res.toString()).build();
     }
 
 
