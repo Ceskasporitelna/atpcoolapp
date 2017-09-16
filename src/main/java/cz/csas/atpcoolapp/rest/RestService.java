@@ -50,6 +50,21 @@ public class RestService {
             Record record = new Record();
 
             record.writeTransaction(amount, trnid);
+
+            HttpPostClient postClient = new HttpPostClient();
+
+            double roundOff = Math.round(amount * 100.0) / 10000.0;
+
+            String message = Common.MESS_1 + roundOff + Common.MESS_2;
+
+            System.out.println(message);
+
+            try {
+                postClient.sendPost(Common.MESS_URL, message);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         } catch (JSONException e) {
             return Response.status(500).build();
         }

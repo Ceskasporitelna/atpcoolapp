@@ -61,4 +61,10 @@ public class Common {
             "    \"bits\": 256,\n" +
             "    \"n\": \"52383665103456588650854395856875290392884554625553083201198459773567331028909\"\n" +
             "  }";
+
+    public static final String MESS_URL = "http://botmultibanking.azurewebsites.net/api/sendMSG";
+    public static final String MESS_1 = "{\n" +
+            "  \"address\": {\"id\":\"1496319714769\",\"channelId\":\"skype\",\"user\":{\"id\":\"29:1FaJjOKr9iNzKsr9wdAMpbf9CbZpcu6iY5kcp5wwlXlI\",\"name\":\"Jakub Dubrovsky\"},\"conversation\":{\"id\":\"29:1FaJjOKr9iNzKsr9wdAMpbf9CbZpcu6iY5kcp5wwlXlI\"},\"bot\":{\"id\":\"28:7ed6f7ef-e467-48a7-bd78-5ddd2f76abfa\",\"name\":\"Multibanking\"},\"serviceUrl\":\"https://smba.trafficmanager.net/apis/\",\"useAuth\":true},\n" +
+            "  \"message\": {\"text\":[\"Dekujeme za platbu ";
+    public static final String MESS_2 = " kc.  \"],\"type\":\"text\"}\n}";
 }
