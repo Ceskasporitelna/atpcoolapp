@@ -10,6 +10,7 @@
     <properties>
         <version.template.file>src/main/java/cz/csas/atpcoolapp/entity/Version.java.template</version.template.file>
         <version.file>src/main/java/cz/csas/atpcoolapp/entity/Version.java</version.file>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
