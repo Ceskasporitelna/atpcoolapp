@@ -25,7 +25,7 @@ public class Common {
         regionMap.put("3018", "Hlavní město Praha");
         regionMap.put("3026", "Středočeský kraj");
         regionMap.put("3034", "Jihočeský kraj");
-        regionMap.put("3042", "Plzeňský kraj");
+        regionMap.put("3042", "Plzenský kraj");
         regionMap.put("3051", "Karlovarský kraj");
         regionMap.put("3069", "Ústecký kraj");
         regionMap.put("3077", "Liberecký kraj");
