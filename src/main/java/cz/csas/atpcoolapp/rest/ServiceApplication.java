@@ -1,5 +1,6 @@
 package cz.csas.atpcoolapp.rest;
 
+import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -20,6 +21,12 @@ public class ServiceApplication extends Application {
 
         // Services
         singletons.add(new RestService());
+
+        CorsFilter corsFilter = new CorsFilter();
+        corsFilter.getAllowedOrigins().add("*");
+        corsFilter.setAllowedMethods("OPTIONS, GET, POST, DELETE, PUT, PATCH");
+        singletons.add(corsFilter);
+
 
         ResteasyProviderFactory providerFactory = ResteasyProviderFactory.getInstance();
         providerFactory.registerProvider(JacksonConfig.class);
