@@ -1,6 +1,7 @@
 package cz.csas.atpcoolapp.services;
 
 import cz.csas.atpcoolapp.Common;
+import cz.csas.atpcoolapp.entity.BillIItem;
 import cz.csas.atpcoolapp.entity.Price;
 import cz.csas.atpcoolapp.entity.Transaction;
 
@@ -21,6 +22,7 @@ import java.util.List;
  */
 public class TransactionService {
     private static final String SELECT_ALL_TRANSACTIONS = "select * from HPLATFORM.TRANSACTIONS order by authdate desc";
+    private static final String SELECT_ITEMS_FOR_TRN = "select * from HPLATFORM.BILITEMS where trnid = ?";
 
     public static List<Transaction> getTransactions() {
         List<Transaction> transactions = new ArrayList<>();
@@ -79,6 +81,64 @@ public class TransactionService {
         }
 
         return transactions;
+    }
+
+    public static List<BillIItem> getBillItems(String trnid) {
+        List<BillIItem> bills = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement preparedStatement;
+        Context ctx = null;
+        String pool_data_source = Common.POOL_DATA_SOURCE;
+        ResultSet rs = null;
+        try {
+            ctx = new InitialContext();
+            javax.sql.DataSource ds = (javax.sql.DataSource) ctx.lookup(pool_data_source);
+            conn = ds.getConnection();
+            preparedStatement = conn.prepareStatement(SELECT_ITEMS_FOR_TRN);
+            preparedStatement.setString(1,trnid);
+
+            rs = preparedStatement.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    BillIItem bil = new BillIItem();
+                    bil.setTrnid(rs.getString("trnid"));
+                    bil.setId(rs.getString("id"));
+                    bil.setName(rs.getString("name"));
+                    bil.setPrice(rs.getString("price"));
+                    bil.setType(rs.getString("type"));
+
+                    bills.add(bil);
+                }
+            }
+
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (conn != null) {
+                    conn.close();
+                }
+
+                if (ctx != null) {
+                    ctx.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return bills;
     }
 
 

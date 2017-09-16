@@ -27,6 +27,10 @@ public class BillIItem {
         this.name = name;
     }
 
+    public BillIItem() {
+
+    }
+
     public String getId() {
         return id;
     }

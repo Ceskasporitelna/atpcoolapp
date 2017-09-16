@@ -1,10 +1,15 @@
 package cz.csas.atpcoolapp.rest;
 
+import cz.csas.atpcoolapp.entity.BillIItem;
 import cz.csas.atpcoolapp.entity.Price;
 import cz.csas.atpcoolapp.entity.Transaction;
 import cz.csas.atpcoolapp.entity.Version;
+import cz.csas.atpcoolapp.services.Record;
 import cz.csas.atpcoolapp.services.StatPrices;
 import cz.csas.atpcoolapp.services.TransactionService;
+import org.jboss.resteasy.spi.touri.URITemplate;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -34,8 +39,18 @@ public class RestService {
     @POST
     @Produces("application/json")
     public Response saifu(String body) {
+        try {
+            System.out.println("Saifu: " + body);
+            JSONObject jsonObject = new JSONObject(body);
+            int amount = jsonObject.getInt("amount");
+            String trnid = jsonObject.getString("trnId");
 
-        //TODO: create "real" data
+            Record record = new Record();
+
+            record.writeTransaction(amount, trnid);
+        } catch (JSONException e) {
+            return Response.status(500).build();
+        }
 
         return Response.status(204).build();
     }
@@ -47,5 +62,14 @@ public class RestService {
         List<Transaction> transactions = TransactionService.getTransactions();
         return Response.status(200).entity(transactions).build();
     }
+
+    @Path("transactions/{id}")
+    @GET
+    @Produces("application/json")
+    public Response transactions(@PathParam("id") String id) {
+        List<BillIItem> billItems = TransactionService.getBillItems(id);
+        return Response.status(200).entity(billItems).build();
+    }
+
 
 }
