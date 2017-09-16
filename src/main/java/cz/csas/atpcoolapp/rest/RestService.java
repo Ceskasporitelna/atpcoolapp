@@ -5,7 +5,6 @@ import cz.csas.atpcoolapp.entity.Transaction;
 import cz.csas.atpcoolapp.entity.Version;
 import cz.csas.atpcoolapp.services.StatPrices;
 import cz.csas.atpcoolapp.services.TransactionService;
-import cz.csas.atpcoolapp.utils.CSVReader;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
